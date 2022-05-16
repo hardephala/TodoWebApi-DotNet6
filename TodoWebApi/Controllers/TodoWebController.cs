@@ -8,20 +8,6 @@ namespace TodoWebApi.Controllers
     [ApiController]
     public class TodoWebController : ControllerBase
     {
-        private static List<TodoWeb> todos = new List<TodoWeb> {
-                new TodoWeb { 
-                    Id = 1, Title = "Learn C sharp", 
-                    Description = "Build a Test API in C# to demo to Olugbenga", 
-                    Createdby = "Taiwo Adefala", 
-                    Createdat = DateTime.Now
-                },
-                new TodoWeb {
-                    Id = 2, Title = "Develop API for OMS",
-                    Description = "Build Endpoints to be consumed by frontend team",
-                    Createdby = "Taiwo Adefala",
-                    Createdat = DateTime.Now
-                }
-        };
 
         private readonly DataContext _context;
 
