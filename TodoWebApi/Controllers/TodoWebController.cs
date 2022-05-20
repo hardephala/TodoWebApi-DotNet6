@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TodoWebApi.Entities;
+using TodoWebApi.Models;
 
 namespace TodoWebApi.Controllers
 {
@@ -31,12 +33,20 @@ namespace TodoWebApi.Controllers
             return Ok(todo);
         }
         [HttpPost]
-        public async Task<ActionResult<List<TodoWeb>>> AddTodo(TodoWeb todo)
+        public async Task<ActionResult<List<TodoWeb>>> AddTodo(TodoModel todo)
         {
-            _context.TodoWebs.Add(todo);
+            var entity = new TodoWeb
+            {
+                Title = todo.Title,
+                Description = todo.Description,
+                Createdby = todo.Createdby
+            };
+            _context.TodoWebs.Add(entity);
             await _context.SaveChangesAsync();
             return Ok(await _context.TodoWebs.ToListAsync());
         }
+
+
         [HttpPut]
         public async Task<ActionResult<List<TodoWeb>>> UpdateTodo(TodoWeb request)
         {

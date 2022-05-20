@@ -1,4 +1,4 @@
-﻿namespace TodoWebApi
+﻿namespace TodoWebApi.Entities
 {
     public class TodoWeb
     {
